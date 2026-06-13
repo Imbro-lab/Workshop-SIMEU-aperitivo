@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iscrizione – Workshop SIMEU ER | 24 giugno 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0f172a;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+}
+
+.page {
+  width: 100%;
+  max-width: 680px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+}
+
+.bg-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg,
+    rgba(251,146,60,0.18) 0%,
+    rgba(236,72,153,0.12) 50%,
+    rgba(14,165,233,0.22) 100%);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 2rem 2.5rem;
+}
+
+/* ── HEADER ── */
+.org-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FEF3C7;
+  background: rgba(249,115,22,0.55);
+  border: 0.5px solid rgba(254,243,199,0.3);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(254,243,199,0.75);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.hero-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #FEF9EE;
+  line-height: 1.25;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero-main em {
+  font-style: italic;
+  color: #FCD34D;
+}
+
+.hero-speakers {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(254,243,199,0.8);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.meta-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(254,243,199,0.9);
+  background: rgba(0,0,0,0.22);
+  border: 0.5px solid rgba(254,243,199,0.2);
+  padding: 5px 13px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.meta-pill i { font-size: 13px; color: #FCD34D; }
+
+/* ── DESCRIPTION CARD ── */
+.desc-card {
+  background: rgba(255,255,255,0.12);
+  border: 0.5px solid rgba(255,255,255,0.22);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.desc-card p {
+  font-size: 13.5px;
+  color: rgba(255,245,220,0.92);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.desc-card p + p { margin-top: 10px; }
+.desc-card strong {
+  font-weight: 500;
+  color: #FEF3C7;
+}
+.desc-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #FCD34D;
+  background: rgba(249,115,22,0.18);
+  border: 0.5px solid rgba(249,115,22,0.3);
+  padding: 5px 12px;
+  border-radius: 8px;
+}
+
+/* ── GLASS FORM CARD ── */
+.glass-card {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 0.5px solid rgba(255,255,255,0.65);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 8px 40px rgba(249,115,22,0.15);
+}
+
+.card-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #7C2D12;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-heading i { font-size: 18px; color: #F97316; }
+
+.field { margin-bottom: 1.1rem; }
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #92400E;
+  margin-bottom: 5px;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding: 10px 13px;
+  border: 1px solid rgba(249,115,22,0.28);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.78);
+  color: #1C0A00;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.field input:focus,
+.field textarea:focus {
+  border-color: #F97316;
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.14);
+}
+.field input::placeholder,
+.field textarea::placeholder { color: #D1A06A; font-weight: 300; }
+.field textarea { resize: vertical; }
+
+.err {
+  font-size: 11px;
+  color: #DC2626;
+  margin-top: 3px;
+  display: none;
+}
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-bottom: 1.25rem;
+}
+.privacy input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #F97316;
+  cursor: pointer;
+}
+.privacy label {
+  font-size: 12px;
+  color: #78350F;
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.btn-iscriviti {
+  width: 100%;
+  padding: 13px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #F97316 0%, #EC4899 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 4px 18px rgba(249,115,22,0.35);
+}
+.btn-iscriviti:hover { opacity: 0.91; }
+.btn-iscriviti:active { transform: scale(0.98); }
+
+/* ── SUCCESS ── */
+.success-box {
+  display: none;
+  text-align: center;
+  padding: 1.5rem 0.5rem;
+}
+.success-icon { font-size: 46px; color: #F97316; margin-bottom: 12px; }
+.success-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #7C2D12;
+  margin-bottom: 8px;
+}
+.success-box p { font-size: 14px; color: #92400E; line-height: 1.6; }
+.btn-altro {
+  margin-top: 16px;
+  padding: 9px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  background: transparent;
+  border: 1px solid rgba(249,115,22,0.4);
+  border-radius: 8px;
+  cursor: pointer;
+  color: #92400E;
+}
+.btn-altro:hover { background: rgba(249,115,22,0.08); }
+
+/* ── ADMIN ── */
+.admin-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 1.75rem 0 1rem;
+}
+.admin-divider::before,
+.admin-divider::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: rgba(254,243,199,0.28);
+}
+.admin-divider span {
+  font-size: 11px;
+  color: rgba(254,243,199,0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.admin-btn { display: flex; align-items: center; justify-content: center; }
+.admin-btn button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: rgba(254,243,199,0.55);
+  background: rgba(0,0,0,0.2);
+  border: 0.5px solid rgba(254,243,199,0.18);
+  padding: 7px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: all 0.15s;
+}
+.admin-btn button:hover { color: #FEF3C7; background: rgba(0,0,0,0.35); }
+
+.admin-panel {
+  display: none;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(18px);
+  border: 0.5px solid rgba(255,255,255,0.6);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 8px 40px rgba(249,115,22,0.12);
+}
+.admin-panel h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #7C2D12;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pwd-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.pwd-row input {
+  flex: 1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  padding: 9px 12px;
+  border: 1px solid rgba(249,115,22,0.25);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.85);
+  color: #1C0A00;
+  outline: none;
+}
+.pwd-row input:focus { border-color: #F97316; }
+.pwd-row button {
+  padding: 9px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #F97316, #EC4899);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pwd-hint { font-size: 11px; color: #A16207; margin-top: 4px; }
+.pwd-err { font-size: 11px; color: #DC2626; display: none; margin-top: 4px; }
+
+.admin-content { display: none; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.stat {
+  background: rgba(254,243,199,0.5);
+  border: 0.5px solid rgba(249,115,22,0.2);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #92400E;
+  font-weight: 600;
+}
+.stat-l { font-size: 11px; color: #A16207; margin-top: 2px; }
+
+.tbl-wrap {
+  max-height: 240px;
+  overflow-y: auto;
+  border: 0.5px solid rgba(249,115,22,0.2);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.75);
+  margin-bottom: 12px;
+}
+table { width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; }
+th {
+  text-align: left;
+  font-weight: 500;
+  color: #92400E;
+  padding: 8px 10px;
+  border-bottom: 0.5px solid rgba(249,115,22,0.2);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  background: rgba(255,248,235,0.97);
+}
+td {
+  padding: 8px 10px;
+  border-bottom: 0.5px solid rgba(249,115,22,0.1);
+  color: #1C0A00;
+  word-break: break-word;
+}
+tr:last-child td { border-bottom: none; }
+.no-data { text-align: center; color: #A16207; font-size: 12px; padding: 20px; }
+
+.act-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-csv, .btn-del {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-csv {
+  background: transparent;
+  border: 1px solid rgba(249,115,22,0.35);
+  color: #92400E;
+}
+.btn-csv:hover { background: rgba(249,115,22,0.08); }
+.btn-del {
+  background: transparent;
+  border: 1px solid rgba(220,38,38,0.3);
+  color: #DC2626;
+}
+.btn-del:hover { background: rgba(220,38,38,0.06); }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  margin-top: 1.75rem;
+  font-size: 11px;
+  color: rgba(254,243,199,0.38);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 480px) {
+  .content { padding: 2rem 1.25rem 2rem; }
+  .hero-main { font-size: 22px; }
+  .field-row { grid-template-columns: 1fr; }
+  .meta-row { gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<!-- SVG Background: Mediterranean sunset -->
+<svg class="bg-scene" viewBox="0 0 680 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A5F"/>
+      <stop offset="35%" stop-color="#7C3D96"/>
+      <stop offset="60%" stop-color="#E8593A"/>
+      <stop offset="80%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FCD34D"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#1E3A5F" stop-opacity="0.9"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FEF9C3" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#FCD34D" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="refl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FCD34D" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur2"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <rect width="680" height="600" fill="url(#sky)"/>
+  <ellipse cx="340" cy="310" rx="90" ry="90" fill="url(#sunGlow)" filter="url(#blur4)"/>
+  <circle cx="340" cy="310" r="38" fill="#FEF9C3" opacity="0.95"/>
+  <circle cx="340" cy="310" r="28" fill="#FEF3C7"/>
+  <rect x="0" y="310" width="680" height="290" fill="url(#sea)"/>
+  <rect x="270" y="310" width="140" height="200" fill="url(#refl)" opacity="0.6" filter="url(#blur2)"/>
+  <ellipse cx="80" cy="312" rx="120" ry="12" fill="#0EA5E9" opacity="0.18"/>
+  <ellipse cx="580" cy="318" rx="100" ry="10" fill="#0EA5E9" opacity="0.15"/>
+  <ellipse cx="340" cy="325" rx="60" ry="6" fill="#FCD34D" opacity="0.22"/>
+  <ellipse cx="340" cy="340" rx="45" ry="4" fill="#FCD34D" opacity="0.14"/>
+  <ellipse cx="340" cy="355" rx="30" ry="3" fill="#FCD34D" opacity="0.08"/>
+  <line x1="0" y1="328" x2="230" y2="328" stroke="#7EC8E3" stroke-width="0.5" opacity="0.3"/>
+  <line x1="0" y1="338" x2="180" y2="338" stroke="#7EC8E3" stroke-width="0.5" opacity="0.2"/>
+  <line x1="450" y1="330" x2="680" y2="330" stroke="#7EC8E3" stroke-width="0.5" opacity="0.3"/>
+  <line x1="500" y1="342" x2="680" y2="342" stroke="#7EC8E3" stroke-width="0.5" opacity="0.2"/>
+  <g opacity="0.85">
+    <rect x="55" y="240" width="6" height="72" rx="3" fill="#1A3A0A"/>
+    <ellipse cx="58" cy="235" rx="16" ry="30" fill="#2D6A1A" opacity="0.9"/>
+    <path d="M58 240 Q74 218 66 205" stroke="#2D6A1A" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <path d="M58 250 Q40 225 50 210" stroke="#3A7A22" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M58 258 Q76 240 72 228" stroke="#2D6A1A" stroke-width="6" stroke-linecap="round" fill="none"/>
+  </g>
+  <g opacity="0.75">
+    <rect x="610" y="255" width="5" height="58" rx="2.5" fill="#1A3A0A"/>
+    <ellipse cx="612" cy="250" rx="13" ry="24" fill="#2D6A1A" opacity="0.9"/>
+    <path d="M612 255 Q626 236 620 224" stroke="#2D6A1A" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M612 263 Q596 242 604 230" stroke="#3A7A22" stroke-width="6" stroke-linecap="round" fill="none"/>
+  </g>
+  <g opacity="0.5">
+    <rect x="630" y="268" width="4" height="44" rx="2" fill="#1A3A0A"/>
+    <ellipse cx="632" cy="264" rx="10" ry="18" fill="#2D6A1A" opacity="0.85"/>
+    <path d="M632 268 Q644 252 638 242" stroke="#2D6A1A" stroke-width="5" stroke-linecap="round" fill="none"/>
+  </g>
+  <g opacity="0.6" filter="url(#blur2)">
+    <ellipse cx="160" cy="280" rx="28" ry="6" fill="#7C3D96" opacity="0.5"/>
+    <ellipse cx="140" cy="275" rx="18" ry="5" fill="#9B59B6" opacity="0.45"/>
+    <ellipse cx="520" cy="270" rx="32" ry="7" fill="#7C3D96" opacity="0.4"/>
+    <ellipse cx="500" cy="263" rx="20" ry="5" fill="#9B59B6" opacity="0.38"/>
+    <ellipse cx="420" cy="285" rx="22" ry="5" fill="#E8593A" opacity="0.35"/>
+  </g>
+  <path d="M0 480 Q170 460 340 475 Q510 490 680 468 L680 600 L0 600Z" fill="#0D2B45" opacity="0.5"/>
+  <path d="M0 510 Q170 495 340 505 Q510 515 680 500 L680 600 L0 600Z" fill="#0A1F30" opacity="0.6"/>
+</svg>
+
+<div class="overlay"></div>
+
+<div class="content">
+
+  <!-- HEADER -->
+  <div class="org-badge">
+    <i class="ti ti-building-hospital"></i> SIMEU Emilia-Romagna
+  </div>
+
+  <p class="hero-title">Workshop · In presenza</p>
+  <h1 class="hero-main">Ricerca clinica:<br><em>come farla – come comunicarla</em></h1>
+  <p class="hero-speakers">
+    Dott. Michele Spampinato &amp; Dott. Lorenzo Demitry
+  </p>
+
+  <div class="meta-row">
+    <div class="meta-pill"><i class="ti ti-calendar-event"></i> 24 giugno 2026</div>
+    <div class="meta-pill"><i class="ti ti-clock"></i> Ore 16:15</div>
+    <div class="meta-pill"><i class="ti ti-map-pin"></i> Bar Combo, Bologna</div>
+    <div class="meta-pill"><i class="ti ti-map-2"></i> Via dei Carracci 69/14</div>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="desc-card">
+    <p>
+      SIMEU Emilia-Romagna vi invita al prossimo workshop <strong>esclusivamente in presenza</strong>
+      dedicato alla ricerca clinica in Medicina d'Urgenza: come progettarla, condurla e comunicarla
+      in modo efficace. Un'occasione di formazione pratica con due relatori di riferimento del settore.
+    </p>
+    <p>
+      A seguire, <strong>aperitivo sociale aperto a tutti</strong> — soci e non soci — al quale vi
+      aspettiamo numerosi! Per consentirci di organizzare al meglio, vi chiediamo di iscrivervi
+      tramite il form qui sotto: ci servirà un numero indicativo di partecipanti da comunicare al locale.
+    </p>
+    <div class="desc-highlight">
+      <i class="ti ti-coin-euro"></i> Costo aperitivo: <strong>16 € a persona</strong>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="glass-card">
+    <div id="formWrap">
+      <div class="card-heading">
+        <i class="ti ti-edit"></i> Iscrizione all'aperitivo
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fn">Nome <span style="color:#DC2626">*</span></label>
+          <input type="text" id="fn" placeholder="Mario" autocomplete="given-name">
+          <div class="err" id="e-fn">Campo obbligatorio</div>
+        </div>
+        <div class="field">
+          <label for="fc">Cognome <span style="color:#DC2626">*</span></label>
+          <input type="text" id="fc" placeholder="Rossi" autocomplete="family-name">
+          <div class="err" id="e-fc">Campo obbligatorio</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="fe">Email <span style="color:#DC2626">*</span></label>
+        <input type="email" id="fe" placeholder="mario.rossi@email.it" autocomplete="email">
+        <div class="err" id="e-fe">Inserisci un'email valida</div>
+      </div>
+
+      <div class="privacy">
+        <input type="checkbox" id="fp">
+        <label for="fp">
+          Acconsento al trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR)
+          per la gestione dell'iscrizione a questo evento.
+        </label>
+      </div>
+      <div class="err" id="e-fp" style="margin-top:-8px;margin-bottom:14px">
+        È necessario accettare per procedere
+      </div>
+
+      <button class="btn-iscriviti" onclick="doSubmit()">
+        Iscriviti all'aperitivo ✦
+      </button>
+    </div>
+
+    <div class="success-box" id="successBox">
+      <div class="success-icon"><i class="ti ti-circle-check"></i></div>
+      <h2>Ci vediamo il 24 giugno!</h2>
+      <p>
+        La tua iscrizione è stata registrata.<br>
+        Ti aspettiamo al Bar Combo per il workshop e l'aperitivo.
+      </p>
+      <button class="btn-altro" onclick="doReset()">Iscrivine un altro</button>
+    </div>
+  </div>
+
+  <!-- ADMIN -->
+  <div class="admin-divider"><span>area organizzatore</span></div>
+
+  <div class="admin-btn">
+    <button id="aToggleBtn" onclick="toggleAdmin()">
+      <i class="ti ti-lock"></i>&nbsp; Pannello partecipanti
+    </button>
+  </div>
+
+  <div class="admin-panel" id="adminPanel">
+    <h3><i class="ti ti-users"></i> Accesso organizzatore</h3>
+
+    <div id="aLogin">
+      <div class="pwd-row">
+        <input type="password" id="aPwd" placeholder="Password" onkeydown="if(event.key==='Enter')checkPwd()">
+        <button onclick="checkPwd()">Accedi</button>
+      </div>
+      <div class="pwd-err" id="aPwdErr">Password non corretta</div>
+      <p class="pwd-hint">Modifica la password nella riga <code>const PWD</code> prima di pubblicare.</p>
+    </div>
+
+    <div class="admin-content" id="aContent">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-n" id="sTot">0</div>
+          <div class="stat-l">Iscritti totali</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" id="sOggi">0</div>
+          <div class="stat-l">Oggi</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" id="sUlt">—</div>
+          <div class="stat-l">Ultimo iscritto</div>
+        </div>
+      </div>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:28px">#</th>
+              <th style="width:30%">Nome</th>
+              <th style="width:38%">Email</th>
+              <th style="width:25%">Data iscrizione</th>
+            </tr>
+          </thead>
+          <tbody id="aTbody">
+            <tr><td colspan="5" class="no-data">Nessun iscritto ancora.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="act-row">
+        <button class="btn-csv" onclick="doCSV()">
+          <i class="ti ti-download"></i> Scarica CSV
+        </button>
+        <button class="btn-del" onclick="doClear()">
+          <i class="ti ti-trash"></i> Cancella tutti
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer">SIMEU Emilia-Romagna · Workshop 24 giugno 2026 · Bologna</p>
+
+</div>
+</div>
+
+<script>
+const KEY = 'simeu_workshop_240626';
+const PWD = 'simeu2026';   // ← cambia questa password prima di pubblicare
+
+function load() {
+  try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; }
+}
+function save(d) { localStorage.setItem(KEY, JSON.stringify(d)); }
+
+function doSubmit() {
+  let ok = true;
+  const n  = document.getElementById('fn').value.trim();
+  const c  = document.getElementById('fc').value.trim();
+  const e  = document.getElementById('fe').value.trim();
+  const p  = document.getElementById('fp').checked;
+
+  document.querySelectorAll('.err').forEach(x => x.style.display = 'none');
+
+  if (!n)  { document.getElementById('e-fn').style.display = 'block'; ok = false; }
+  if (!c)  { document.getElementById('e-fc').style.display = 'block'; ok = false; }
+  if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) {
+    document.getElementById('e-fe').style.display = 'block'; ok = false;
+  }
+  if (!p)  { document.getElementById('e-fp').style.display = 'block'; ok = false; }
+  if (!ok) return;
+
+  const d   = load();
+  const now = new Date();
+  d.push({
+    id:       d.length + 1,
+    nome:     n,
+    cognome:  c,
+    email:    e,
+    data_iso: now.toISOString(),
+    data_fmt: now.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' })
+              + ' ' + now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })
+  });
+  save(d);
+
+  document.getElementById('formWrap').style.display  = 'none';
+  document.getElementById('successBox').style.display = 'block';
+  if (document.getElementById('aContent').style.display === 'block') renderTable();
+}
+
+function doReset() {
+  ['fn', 'fc', 'fe'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('fp').checked = false;
+  document.querySelectorAll('.err').forEach(x => x.style.display = 'none');
+  document.getElementById('successBox').style.display = 'none';
+  document.getElementById('formWrap').style.display   = 'block';
+}
+
+function toggleAdmin() {
+  const p = document.getElementById('adminPanel');
+  const b = document.getElementById('aToggleBtn');
+  if (p.style.display === 'block') {
+    p.style.display = 'none';
+    b.innerHTML = '<i class="ti ti-lock"></i>&nbsp; Pannello partecipanti';
+  } else {
+    p.style.display = 'block';
+    b.innerHTML = '<i class="ti ti-lock-open"></i>&nbsp; Chiudi pannello';
+  }
+}
+
+function checkPwd() {
+  if (document.getElementById('aPwd').value === PWD) {
+    document.getElementById('aLogin').style.display   = 'none';
+    document.getElementById('aContent').style.display = 'block';
+    renderTable();
+  } else {
+    document.getElementById('aPwdErr').style.display = 'block';
+    document.getElementById('aPwd').value = '';
+  }
+}
+
+function renderTable() {
+  const d = load();
+  document.getElementById('sTot').textContent  = d.length;
+  const oggi = new Date().toLocaleDateString('it-IT');
+  document.getElementById('sOggi').textContent =
+    d.filter(r => new Date(r.data_iso).toLocaleDateString('it-IT') === oggi).length;
+  document.getElementById('sUlt').textContent  = d.length ? d[d.length - 1].cognome : '—';
+
+  const tb = document.getElementById('aTbody');
+  if (!d.length) {
+    tb.innerHTML = '<tr><td colspan="5" class="no-data">Nessun iscritto ancora.</td></tr>';
+    return;
+  }
+  tb.innerHTML = [...d].reverse().map(r => `
+    <tr>
+      <td style="color:#A16207">${r.id}</td>
+      <td><strong>${r.nome} ${r.cognome}</strong></td>
+      <td style="color:#78350F">${r.email}</td>
+      <td style="color:#A16207;white-space:nowrap;font-size:11px">${r.data_fmt}</td>
+    </tr>`).join('');
+}
+
+function doCSV() {
+  const d = load();
+  if (!d.length) { alert('Nessun iscritto da scaricare.'); return; }
+  const header = ['#', 'Nome', 'Cognome', 'Email', 'Data iscrizione'];
+  const rows   = d.map(r => [r.id, r.nome, r.cognome, r.email, r.data_fmt]);
+  const csv    = [header, ...rows]
+    .map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(','))
+    .join('\n');
+  const a = document.createElement('a');
+  a.href     = URL.createObjectURL(new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' }));
+  a.download = 'iscritti_workshop_SIMEU_240626.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function doClear() {
+  if (!confirm('Cancellare tutti gli iscritti? Questa azione è irreversibile.')) return;
+  localStorage.removeItem(KEY);
+  renderTable();
+}
+</script>
+
+</body>
+</html>
